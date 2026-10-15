@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wireframe - Kasir dan Stok Sederhana</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      background: #f0f0f0;
+      color: #111;
+      padding: 24px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .meta {
+      color: #555;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .page-nav {
+      background: #fff;
+      border: 2px solid #333;
+      padding: 14px 20px;
+      margin-bottom: 32px;
+      display: inline-block;
+    }
+
+    .page-nav h2 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #999;
+      padding-bottom: 6px;
+    }
+
+    .page-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .page-nav a {
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+      border-bottom: 2px solid #333;
+      padding-bottom: 1px;
+    }
+
+    .page-nav a:hover { background: #ddd; }
+
+    .page-section {
+      margin-bottom: 60px;
+    }
+
+    .page-section h2 {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-left: 5px solid #333;
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
+    .frames {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .frame-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .frame-label {
+      font-size: 11px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #555;
+    }
+
+    .frame-desktop {
+      width: 860px;
+      border: 2px solid #333;
+      background: #fff;
+      min-height: 500px;
+    }
+
+    .frame-mobile {
+      width: 360px;
+      border: 2px solid #333;
+      background: #fff;
+      min-height: 500px;
+    }
+
+    .placeholder {
+      background: #e8e8e8;
+      border: 2px dashed #999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .wf-input {
+      display: block;
+      width: 100%;
+      border: 2px solid #888;
+      padding: 7px 10px;
+      font-size: 12px;
+      background: #fafafa;
+      color: #333;
+    }
+
+    .wf-label {
+      display: block;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #444;
+    }
+
+    .btn-primary {
+      background: #333;
+      color: #fff;
+      border: 2px solid #111;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #333;
+      border: 2px solid #888;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: default;
+      display: inline-block;
+    }
+
+    .btn-sm {
+      background: #ddd;
+      color: #111;
+      border: 1px solid #999;
+      padding: 3px 8px;
+      font-size: 11px;
+      cursor: default;
+      display: inline-block;
+      margin-right: 4px;
+    }
+
+    .error-box {
+      border: 2px dashed #666;
+      background: #e8e8e8;
+      padding: 8px 12px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .annotation {
+      background: #fffbe6;
+      border: 1px dashed #bba;
+      color: #665500;
+      font-size: 10px;
+      padding: 3px 6px;
+      margin-top: 4px;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .app-header {
+      background: #333;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .app-header .brand { font-weight: bold; font-size: 14px; }
+
+    .app-header .datetime {
+      font-size: 11px;
+      color: #ccc;
+      text-align: right;
+    }
+
+    .layout-desktop {
+      display: flex;
+      min-height: 460px;
+    }
+
+    .sidebar {
+      width: 160px;
+      background: #f5f5f5;
+      border-right: 2px solid #ccc;
+      flex-shrink: 0;
+      padding: 12px 0;
+    }
+
+    .sidebar-item {
+      padding: 9px 16px;
+      font-size: 12px;
+      border-bottom: 1px solid #ddd;
+      cursor: default;
+    }
+
+    .sidebar-item.active {
+      background: #333;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Konten utama */
+    .main-content {
+      flex: 1;
+      padding: 16px;
+      overflow: auto;
+    }
+
+    .wf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .wf-table th {
+      background: #ddd;
+      border: 1px solid #bbb;
+      padding: 6px 8px;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    .wf-table td {
+      border: 1px solid #ccc;
+      padding: 5px 8px;
+      color: #444;
+    }
+
+    .wf-table tr:nth-child(even) td { background: #f9f9f9; }
+
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .summary-cards.mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .summary-card {
+      border: 2px solid #aaa;
+      padding: 12px 10px;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    .summary-card .card-title {
+      font-size: 10px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .summary-card .card-value {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .product-card {
+      border: 1px solid #bbb;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: #fafafa;
+      font-size: 11px;
+    }
+
+    .product-card .pc-name {
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .product-card .pc-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+      color: #555;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 4px;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    .page-btn {
+      border: 1px solid #999;
+      padding: 4px 9px;
+      font-size: 11px;
+      background: #f0f0f0;
+      cursor: default;
+    }
+
+    .page-btn.active {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+
+    .mobile-header {
+      background: #333;
+      color: #fff;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      cursor: default;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #fff;
+    }
+
+    .mobile-nav-open {
+      background: #444;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .mobile-nav-open div {
+      padding: 9px 14px;
+      border-bottom: 1px solid #555;
+    }
+
+    .mobile-nav-open div.active {
+      background: #666;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    /* Select */
+    .wf-select {
+      display: block;
+      width: 100%;
+      border: 2px solid #888;
+      padding: 7px 10px;
+      font-size: 12px;
+      background: #fafafa;
+      color: #444;
+    }
+
+    /* Textarea */
+    .wf-textarea {
+      display: block;
+      width: 100%;
+      border: 2px solid #888;
+      padding: 7px 10px;
+      font-size: 12px;
+      background: #fafafa;
+      color: #444;
+      resize: none;
+    }
+
+    /* Divider antar bagian */
+    .wf-divider {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 12px 0;
+    }
+
+    /* Section title di dalam halaman */
+    .section-title {
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 4px;
+    }
+
+    /* Toolbar (baris pencarian + tombol) */
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar .wf-input { width: 180px; }
+    .toolbar .wf-select { width: 130px; }
+
+    /* Toolbar HP: susun vertikal */
+    .toolbar.mobile { flex-direction: column; align-items: stretch; }
+    .toolbar.mobile .wf-input,
+    .toolbar.mobile .wf-select { width: 100%; }
+
+    /* Sticky anchor offset (agar judul tidak tertutup) */
+    .anchor-target { padding-top: 8px; }
+  </style>
+</head>
+<body>
+
+<!-- =====================================================
+     JUDUL DOKUMEN
+===================================================== -->
+<h1>Wireframe Low-Fidelity — Kasir dan Stok Sederhana</h1>
+<p class="meta">
+  Milestone 1 · Tugas Pemrograman Berbasis Web.
+</p>
+
+<!-- =====================================================
+     DAFTAR NAVIGASI HALAMAN
+     Klik salah satu untuk langsung lompat ke halaman
+===================================================== -->
+<nav class="page-nav" aria-label="Navigasi halaman wireframe">
+  <h2>Daftar Halaman</h2>
+  <ul>
+    <li><a href="#halaman-login">1. Login</a></li>
+    <li><a href="#halaman-dashboard">2. Dashboard</a></li>
+    <li><a href="#halaman-produk">3. Daftar Produk</a></li>
+    <li><a href="#halaman-form-produk">4. Form Tambah / Edit Produk</a></li>
+  </ul>
+</nav>
+
+
+<!-- =====================================================
+     HALAMAN 1: LOGIN
+===================================================== -->
+<section id="halaman-login" class="page-section anchor-target">
+  <h2>Halaman 1 — Login</h2>
+
+  <div class="frames">
+
+    <!-- ── Frame Desktop ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan Desktop</span>
+      <div class="frame-desktop">
+
+        <!-- Latar halaman login: kotak tengah -->
+        <div style="background:#e8e8e8; min-height:500px; display:flex; align-items:center; justify-content:center; padding:24px;">
+
+          <!-- Kotak form login -->
+          <div style="background:#fff; border:2px solid #aaa; width:340px; padding:32px;">
+
+            <!-- Logo placeholder -->
+            <div class="placeholder" style="height:72px; margin-bottom:20px;">
+              [ Logo Aplikasi ]<br/>120 × 72 px
+            </div>
+
+            <div style="text-align:center; font-size:14px; font-weight:bold; margin-bottom:20px;">
+              Kasir dan Stok Sederhana
+            </div>
+
+            <!-- Field Username -->
+            <div class="form-group">
+              <label class="wf-label" for="u-username">Username</label>
+              <input class="wf-input" id="u-username" type="text" placeholder="Masukkan username" readonly />
+            </div>
+
+            <!-- Field Password -->
+            <div class="form-group">
+              <label class="wf-label" for="u-password">Password</label>
+              <input class="wf-input" id="u-password" type="password" placeholder="Masukkan password" readonly />
+            </div>
+
+            <!-- Tombol Masuk -->
+            <div style="margin-bottom:12px;">
+              <div class="btn-primary" style="width:100%; text-align:center; padding:10px;">Masuk</div>
+              <div class="annotation">Tombol ini memvalidasi kredensial &amp; memulai sesi PHP</div>
+            </div>
+
+            <!-- Area pesan error -->
+            <div class="error-box">
+              [Pesan error muncul di sini, misal: "Username atau password salah"]
+            </div>
+            <div class="annotation">Kotak ini tampil hanya jika login gagal</div>
+
+          </div><!-- /kotak form -->
+        </div><!-- /latar -->
+
+      </div><!-- /frame-desktop -->
+    </div><!-- /frame-wrapper desktop -->
+
+
+    <!-- ── Frame HP ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan HP (360 px)</span>
+      <div class="frame-mobile">
+
+        <!-- Latar HP -->
+        <div style="background:#e8e8e8; min-height:500px; display:flex; align-items:center; justify-content:center; padding:16px;">
+
+          <!-- Kotak form login HP -->
+          <div style="background:#fff; border:2px solid #aaa; width:100%; padding:24px;">
+
+            <!-- Logo placeholder HP -->
+            <div class="placeholder" style="height:60px; margin-bottom:16px;">
+              [ Logo ]
+            </div>
+
+            <div style="text-align:center; font-size:13px; font-weight:bold; margin-bottom:16px;">
+              Kasir &amp; Stok Sederhana
+            </div>
+
+            <!-- Field Username HP -->
+            <div class="form-group">
+              <label class="wf-label">Username</label>
+              <input class="wf-input" type="text" placeholder="Username" readonly />
+            </div>
+
+            <!-- Field Password HP -->
+            <div class="form-group">
+              <label class="wf-label">Password</label>
+              <input class="wf-input" type="password" placeholder="Password" readonly />
+            </div>
+
+            <!-- Tombol Masuk HP -->
+            <div style="margin-bottom:10px;">
+              <div class="btn-primary" style="width:100%; text-align:center; padding:9px; font-size:13px;">Masuk</div>
+            </div>
+
+            <!-- Pesan error HP -->
+            <div class="error-box" style="font-size:10px;">
+              [Pesan error di sini]
+            </div>
+
+          </div><!-- /kotak form HP -->
+        </div><!-- /latar HP -->
+
+      </div><!-- /frame-mobile -->
+    </div><!-- /frame-wrapper HP -->
+
+  </div><!-- /frames -->
+</section>
+
+
+<!-- =====================================================
+     HALAMAN 2: DASHBOARD
+===================================================== -->
+<section id="halaman-dashboard" class="page-section anchor-target">
+  <h2>Halaman 2 — Dashboard</h2>
+
+  <div class="frames">
+
+    <!-- ── Frame Desktop ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan Desktop</span>
+      <div class="frame-desktop">
+
+        <!-- Header aplikasi dengan tanggal dan jam -->
+        <div class="app-header">
+          <span class="brand">Kasir &amp; Stok</span>
+          <div class="datetime">
+            Rabu, 14 Oktober 2026<br/>
+            <span id="clock-demo" style="font-size:12px;">08:30:00</span>
+            <div class="annotation" style="color:#aaa; font-size:9px; margin-top:2px;">
+              Jam diperbarui real-time via JavaScript
+            </div>
+          </div>
+          <span style="font-size:11px; color:#ccc;">Admin ▾</span>
+        </div>
+
+        <!-- Layout: sidebar + konten -->
+        <div class="layout-desktop">
+
+          <!-- Sidebar navigasi -->
+          <nav class="sidebar" aria-label="Sidebar navigasi">
+            <div class="sidebar-item active">Dashboard</div>
+            <div class="sidebar-item">Produk</div>
+            <div class="sidebar-item">Kategori</div>
+            <div class="sidebar-item">Transaksi</div>
+            <div class="sidebar-item">Logout</div>
+          </nav>
+
+          <!-- Konten utama dashboard -->
+          <main class="main-content">
+            <div class="section-title">Ringkasan Hari Ini</div>
+
+            <!-- 4 kotak ringkasan -->
+            <div class="summary-cards">
+              <div class="summary-card">
+                <div class="card-title">Jumlah Produk</div>
+                <div class="card-value">48</div>
+              </div>
+              <div class="summary-card">
+                <div class="card-title">Stok Tersedia</div>
+                <div class="card-value">312</div>
+              </div>
+              <div class="summary-card">
+                <div class="card-title">Transaksi Hari Ini</div>
+                <div class="card-value">15</div>
+              </div>
+              <div class="summary-card">
+                <div class="card-title">Total Penjualan</div>
+                <div class="card-value" style="font-size:16px;">Rp 420.000</div>
+              </div>
+            </div>
+            <div class="annotation">4 kartu ini menampilkan data ringkasan dari query database, direfresh tiap muat halaman</div>
+
+            <hr class="wf-divider" />
+
+            <!-- Tabel transaksi terbaru -->
+            <div class="section-title">Transaksi Terbaru</div>
+            <table class="wf-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Waktu</th>
+                  <th>Nama Produk</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th>Kasir</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>08:15</td><td>Nama Produk A</td><td>2</td><td>Rp 20.000</td><td>Admin</td></tr>
+                <tr><td>2</td><td>08:22</td><td>Nama Produk B</td><td>1</td><td>Rp 15.000</td><td>Admin</td></tr>
+                <tr><td>3</td><td>08:29</td><td>Nama Produk C</td><td>3</td><td>Rp 45.000</td><td>Admin</td></tr>
+                <tr><td>4</td><td colspan="4" style="color:#aaa; font-size:10px;">… (5 baris terbaru)</td></tr>
+              </tbody>
+            </table>
+            <div class="annotation">Tabel menampilkan 5–10 transaksi terbaru; klik "Lihat Semua" untuk ke halaman Transaksi</div>
+
+          </main><!-- /main-content -->
+        </div><!-- /layout-desktop -->
+
+      </div><!-- /frame-desktop -->
+    </div><!-- /frame-wrapper desktop -->
+
+
+    <!-- ── Frame HP ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan HP (360 px)</span>
+      <div class="frame-mobile">
+
+        <!-- Header HP dengan hamburger -->
+        <div class="mobile-header">
+          <span style="font-weight:bold; font-size:13px;">Kasir &amp; Stok</span>
+          <div class="hamburger" title="Buka menu navigasi">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="annotation" style="margin:4px 8px;">Ikon hamburger membuka/tutup menu navigasi</div>
+
+        <!-- Menu navigasi HP (ditampilkan terbuka sebagai contoh) -->
+        <div class="mobile-nav-open">
+          <div class="active">Dashboard</div>
+          <div>Produk</div>
+          <div>Kategori</div>
+          <div>Transaksi</div>
+          <div>Logout</div>
+        </div>
+        <div class="annotation" style="margin:4px 8px;">Menu ini tersembunyi secara default; muncul saat hamburger diklik</div>
+
+        <!-- Tanggal & jam HP -->
+        <div style="background:#f5f5f5; border-bottom:1px solid #ddd; padding:6px 12px; font-size:10px; color:#555;">
+          Rabu, 14 Oktober 2026 · 08:30:00
+        </div>
+
+        <!-- Konten HP -->
+        <div style="padding:12px;">
+          <div class="section-title" style="font-size:12px;">Ringkasan Hari Ini</div>
+
+          <!-- Kartu ringkasan 2 kolom di HP -->
+          <div class="summary-cards mobile">
+            <div class="summary-card">
+              <div class="card-title">Jml. Produk</div>
+              <div class="card-value" style="font-size:18px;">48</div>
+            </div>
+            <div class="summary-card">
+              <div class="card-title">Stok</div>
+              <div class="card-value" style="font-size:18px;">312</div>
+            </div>
+            <div class="summary-card">
+              <div class="card-title">Transaksi</div>
+              <div class="card-value" style="font-size:18px;">15</div>
+            </div>
+            <div class="summary-card">
+              <div class="card-title">Penjualan</div>
+              <div class="card-value" style="font-size:13px;">Rp 420rb</div>
+            </div>
+          </div>
+
+          <hr class="wf-divider" />
+
+          <!-- Tabel → daftar kartu di HP -->
+          <div class="section-title" style="font-size:12px;">Transaksi Terbaru</div>
+          <div class="annotation">Di HP, tabel diganti kartu vertikal agar mudah dibaca</div>
+
+          <!-- Kartu transaksi HP -->
+          <div class="product-card">
+            <div class="pc-name">Nama Produk A</div>
+            <div class="pc-row"><span>Waktu</span><span>08:15</span></div>
+            <div class="pc-row"><span>Qty</span><span>2</span></div>
+            <div class="pc-row"><span>Total</span><span>Rp 20.000</span></div>
+          </div>
+          <div class="product-card">
+            <div class="pc-name">Nama Produk B</div>
+            <div class="pc-row"><span>Waktu</span><span>08:22</span></div>
+            <div class="pc-row"><span>Qty</span><span>1</span></div>
+            <div class="pc-row"><span>Total</span><span>Rp 15.000</span></div>
+          </div>
+          <div style="color:#aaa; font-size:10px; text-align:center; padding:6px;">… kartu lainnya …</div>
+
+        </div><!-- /padding HP -->
+
+      </div><!-- /frame-mobile -->
+    </div><!-- /frame-wrapper HP -->
+
+  </div><!-- /frames -->
+</section>
+
+
+<!-- =====================================================
+     HALAMAN 3: DAFTAR PRODUK
+===================================================== -->
+<section id="halaman-produk" class="page-section anchor-target">
+  <h2>Halaman 3 — Daftar Produk</h2>
+
+  <div class="frames">
+
+    <!-- ── Frame Desktop ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan Desktop</span>
+      <div class="frame-desktop">
+
+        <!-- Header -->
+        <div class="app-header">
+          <span class="brand">Kasir &amp; Stok</span>
+          <div class="datetime">Rabu, 14 Oktober 2026<br/>08:30:00</div>
+          <span style="font-size:11px; color:#ccc;">Admin ▾</span>
+        </div>
+
+        <div class="layout-desktop">
+
+          <!-- Sidebar navigasi -->
+          <nav class="sidebar">
+            <div class="sidebar-item">Dashboard</div>
+            <div class="sidebar-item active">Produk</div>
+            <div class="sidebar-item">Kategori</div>
+            <div class="sidebar-item">Transaksi</div>
+            <div class="sidebar-item">Logout</div>
+          </nav>
+
+          <!-- Konten daftar produk -->
+          <main class="main-content">
+            <div class="section-title">Daftar Produk</div>
+
+            <!-- Toolbar: pencarian + filter + tombol tambah -->
+            <div class="toolbar">
+              <input class="wf-input" type="text" placeholder="Cari produk..." style="width:180px;" readonly />
+              <select class="wf-select" style="width:130px;" disabled>
+                <option>Semua Kategori</option>
+                <option>Makanan</option>
+                <option>Minuman</option>
+              </select>
+              <div class="btn-primary">+ Tambah Produk</div>
+            </div>
+            <div class="annotation">Pencarian via AJAX; filter kategori memuat ulang tabel tanpa reload halaman. Tombol "Tambah Produk" membuka Form Tambah/Edit Produk.</div>
+
+            <!-- Tabel daftar produk -->
+            <table class="wf-table">
+              <thead>
+                <tr>
+                  <th>Kode</th>
+                  <th>Nama Produk</th>
+                  <th>Kategori</th>
+                  <th>Harga (Rp)</th>
+                  <th>Stok</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>PRD-001</td>
+                  <td>Nama Produk A</td>
+                  <td>Makanan</td>
+                  <td>10.000</td>
+                  <td>25</td>
+                  <td>
+                    <span class="btn-sm">Edit</span>
+                    <span class="btn-sm">Hapus</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PRD-002</td>
+                  <td>Nama Produk B</td>
+                  <td>Minuman</td>
+                  <td>8.000</td>
+                  <td>10</td>
+                  <td>
+                    <span class="btn-sm">Edit</span>
+                    <span class="btn-sm">Hapus</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>PRD-003</td>
+                  <td>Nama Produk C</td>
+                  <td>Lain-lain</td>
+                  <td>15.000</td>
+                  <td style="color:#999;">3</td>
+                  <td>
+                    <span class="btn-sm">Edit</span>
+                    <span class="btn-sm">Hapus</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="6" style="color:#aaa; font-size:10px; text-align:center;">
+                    … baris data lainnya …
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="annotation">Kolom "Stok" menampilkan peringatan jika di bawah ambang batas minimum. Tombol "Edit" membuka Form Edit Produk. Tombol "Hapus" memunculkan konfirmasi sebelum menghapus.</div>
+
+            <!-- Area pagination -->
+            <div class="pagination">
+              <span class="page-btn">‹ Prev</span>
+              <span class="page-btn active">1</span>
+              <span class="page-btn">2</span>
+              <span class="page-btn">3</span>
+              <span class="page-btn">Next ›</span>
+              <span style="font-size:10px; color:#888; margin-left:8px;">Menampilkan 1–10 dari 48 produk</span>
+            </div>
+            <div class="annotation">Pagination memuat data per halaman dari server (bukan semua data sekaligus)</div>
+
+          </main><!-- /main-content -->
+        </div><!-- /layout-desktop -->
+
+      </div><!-- /frame-desktop -->
+    </div><!-- /frame-wrapper desktop -->
+
+
+    <!-- ── Frame HP ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan HP (360 px)</span>
+      <div class="frame-mobile">
+
+        <!-- Header HP -->
+        <div class="mobile-header">
+          <span style="font-weight:bold; font-size:13px;">Daftar Produk</span>
+          <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+
+        <div style="padding:12px;">
+
+          <!-- Toolbar HP: susun vertikal -->
+          <div class="toolbar mobile" style="margin-bottom:10px;">
+            <input class="wf-input" type="text" placeholder="Cari produk..." readonly />
+            <select class="wf-select" disabled>
+              <option>Semua Kategori</option>
+            </select>
+            <div class="btn-primary" style="text-align:center;">+ Tambah Produk</div>
+          </div>
+          <div class="annotation">Di HP toolbar disusun vertikal agar tidak terpotong</div>
+
+          <!-- Tabel → kartu di HP -->
+          <div class="annotation">Di HP, tabel diganti daftar kartu produk</div>
+
+          <!-- Kartu produk HP -->
+          <div class="product-card">
+            <div class="pc-name">PRD-001 · Nama Produk A</div>
+            <div class="pc-row"><span>Kategori</span><span>Makanan</span></div>
+            <div class="pc-row"><span>Harga</span><span>Rp 10.000</span></div>
+            <div class="pc-row"><span>Stok</span><span>25</span></div>
+            <div style="margin-top:6px; display:flex; gap:6px;">
+              <span class="btn-sm" style="flex:1; text-align:center;">Edit</span>
+              <span class="btn-sm" style="flex:1; text-align:center;">Hapus</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="pc-name">PRD-002 · Nama Produk B</div>
+            <div class="pc-row"><span>Kategori</span><span>Minuman</span></div>
+            <div class="pc-row"><span>Harga</span><span>Rp 8.000</span></div>
+            <div class="pc-row"><span>Stok</span><span>10</span></div>
+            <div style="margin-top:6px; display:flex; gap:6px;">
+              <span class="btn-sm" style="flex:1; text-align:center;">Edit</span>
+              <span class="btn-sm" style="flex:1; text-align:center;">Hapus</span>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="pc-name">PRD-003 · Nama Produk C</div>
+            <div class="pc-row"><span>Kategori</span><span>Lain-lain</span></div>
+            <div class="pc-row"><span>Harga</span><span>Rp 15.000</span></div>
+            <div class="pc-row"><span>Stok</span><span style="color:#777;">3 - Hampir habis</span></div>
+            <div style="margin-top:6px; display:flex; gap:6px;">
+              <span class="btn-sm" style="flex:1; text-align:center;">Edit</span>
+              <span class="btn-sm" style="flex:1; text-align:center;">Hapus</span>
+            </div>
+          </div>
+
+          <div style="color:#aaa; font-size:10px; text-align:center; padding:4px;">… kartu lainnya …</div>
+
+          <!-- Pagination HP -->
+          <div class="pagination" style="justify-content:center; margin-top:10px;">
+            <span class="page-btn">‹</span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">3</span>
+            <span class="page-btn">›</span>
+          </div>
+
+        </div><!-- /padding HP -->
+
+      </div><!-- /frame-mobile -->
+    </div><!-- /frame-wrapper HP -->
+
+  </div><!-- /frames -->
+</section>
+
+
+<!-- =====================================================
+     HALAMAN 4: FORM TAMBAH / EDIT PRODUK
+===================================================== -->
+<section id="halaman-form-produk" class="page-section anchor-target">
+  <h2>Halaman 4 — Form Tambah / Edit Produk</h2>
+
+  <div class="frames">
+
+    <!-- ── Frame Desktop ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan Desktop</span>
+      <div class="frame-desktop">
+
+        <!-- Header -->
+        <div class="app-header">
+          <span class="brand">Kasir &amp; Stok</span>
+          <div class="datetime">Rabu, 14 Oktober 2026<br/>08:30:00</div>
+          <span style="font-size:11px; color:#ccc;">Admin ▾</span>
+        </div>
+
+        <div class="layout-desktop">
+
+          <!-- Sidebar navigasi -->
+          <nav class="sidebar">
+            <div class="sidebar-item">Dashboard</div>
+            <div class="sidebar-item active">Produk</div>
+            <div class="sidebar-item">Kategori</div>
+            <div class="sidebar-item">Transaksi</div>
+            <div class="sidebar-item">Logout</div>
+          </nav>
+
+          <!-- Konten form -->
+          <main class="main-content">
+
+            <!-- Judul berubah antara "Tambah" dan "Edit" -->
+            <div class="section-title">
+              Tambah Produk Baru
+              <span style="font-size:10px; font-weight:normal; color:#888; margin-left:8px;">
+                (judul berubah menjadi "Edit Produk" saat mode edit)
+              </span>
+            </div>
+
+            <!-- Baris 1: Nama Produk + Kategori -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="wf-label" for="f-nama">Nama Produk <span style="color:#c00;">*</span></label>
+                <input class="wf-input" id="f-nama" type="text" placeholder="Masukkan nama produk" readonly />
+              </div>
+              <div class="form-group">
+                <label class="wf-label" for="f-kategori">Kategori <span style="color:#c00;">*</span></label>
+                <select class="wf-select" id="f-kategori" disabled>
+                  <option>-- Pilih Kategori --</option>
+                  <option>Makanan</option>
+                  <option>Minuman</option>
+                  <option>Lain-lain</option>
+                </select>
+                <div class="annotation">Dropdown diisi dari tabel kategori di database</div>
+              </div>
+            </div>
+
+            <!-- Baris 2: Harga + Stok -->
+            <div class="form-row">
+              <div class="form-group">
+                <label class="wf-label" for="f-harga">Harga (Rp) <span style="color:#c00;">*</span></label>
+                <input class="wf-input" id="f-harga" type="text" placeholder="Contoh: 10000" readonly />
+                <div class="annotation">Hanya menerima input angka; divalidasi sisi klien dan server</div>
+              </div>
+              <div class="form-group">
+                <label class="wf-label" for="f-stok">Stok Awal <span style="color:#c00;">*</span></label>
+                <input class="wf-input" id="f-stok" type="text" placeholder="Contoh: 50" readonly />
+                <div class="annotation">Saat mode Edit, stok diubah via fitur stok terpisah; nilai ini hanya untuk produk baru</div>
+              </div>
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="form-group">
+              <label class="wf-label" for="f-deskripsi">Deskripsi</label>
+              <textarea class="wf-textarea" id="f-deskripsi" rows="4" placeholder="Deskripsi produk (opsional)" readonly></textarea>
+            </div>
+
+            <!-- Gambar placeholder -->
+            <div class="form-group">
+              <label class="wf-label">Gambar Produk (opsional)</label>
+              <div class="placeholder" style="height:64px;">
+                [ Area upload gambar / drag &amp; drop ]
+              </div>
+              <div class="annotation">Fitur upload gambar — opsional, dapat diimplementasi di milestone berikutnya</div>
+            </div>
+
+            <hr class="wf-divider" />
+
+            <!-- Tombol aksi -->
+            <div style="display:flex; gap:10px; align-items:center;">
+              <div class="btn-primary" style="padding:10px 24px;">Simpan</div>
+              <div class="btn-secondary" style="padding:10px 24px;">Batal</div>
+            </div>
+            <div class="annotation">
+              "Simpan" → kirim data via POST ke PHP (validasi & simpan ke DB & redirect ke Daftar Produk).
+              "Batal" → kembali ke Daftar Produk tanpa menyimpan.
+            </div>
+
+          </main><!-- /main-content -->
+        </div><!-- /layout-desktop -->
+
+      </div><!-- /frame-desktop -->
+    </div><!-- /frame-wrapper desktop -->
+
+
+    <!-- ── Frame HP ── -->
+    <div class="frame-wrapper">
+      <span class="frame-label">Tampilan HP (360 px)</span>
+      <div class="frame-mobile">
+
+        <!-- Header HP -->
+        <div class="mobile-header">
+          <span style="font-weight:bold; font-size:13px;">Tambah Produk</span>
+          <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+
+        <div style="padding:14px;">
+
+          <div class="form-group">
+            <label class="wf-label">Nama Produk *</label>
+            <input class="wf-input" type="text" placeholder="Masukkan nama produk" readonly />
+          </div>
+
+          <div class="form-group">
+            <label class="wf-label">Kategori *</label>
+            <select class="wf-select" disabled>
+              <option>-- Pilih Kategori --</option>
+              <option>Makanan</option>
+              <option>Minuman</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="wf-label">Harga (Rp) *</label>
+            <input class="wf-input" type="text" placeholder="Contoh: 10000" readonly />
+          </div>
+
+          <div class="form-group">
+            <label class="wf-label">Stok Awal *</label>
+            <input class="wf-input" type="text" placeholder="Contoh: 50" readonly />
+          </div>
+
+          <div class="form-group">
+            <label class="wf-label">Deskripsi</label>
+            <textarea class="wf-textarea" rows="3" placeholder="Deskripsi (opsional)" readonly></textarea>
+          </div>
+
+          <div class="form-group">
+            <div class="placeholder" style="height:52px; font-size:10px;">
+              [ Upload Gambar (opsional) ]
+            </div>
+          </div>
+
+          <hr class="wf-divider" />
+
+          
+          <div class="form-group">
+            <div class="btn-primary" style="width:100%; text-align:center; padding:10px; margin-bottom:8px;">
+              Simpan
+            </div>
+            <div class="btn-secondary" style="width:100%; text-align:center; padding:10px;">
+              Batal
+            </div>
+          </div>
+          <div class="annotation">Di HP tombol disusun vertikal full-width agar mudah ditekan dengan jempol</div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<footer style="margin-top:40px; border-top:2px solid #ccc; padding-top:14px; color:#888; font-size:11px;">
+  Wireframe Low-Fidelity · Kasir dan Stok Sederhana ·
+  Milestone 1 - Perencanaan · Pemrograman Berbasis Web
+</footer>
+
+<script>
+  const clockEl = document.getElementById('clock-demo');
+  if (clockEl) {
+    setInterval(() => {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      clockEl.textContent = `${hh}:${mm}:${ss}`;
+    }, 1000);
+  }
+</script>
+
+</body>
+</html>
