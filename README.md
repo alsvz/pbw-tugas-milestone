@@ -16,7 +16,7 @@
 | [Mohamad Aldi Pratama] | [A11.2025.16512] |
 | [Vincent Sepriano Gowtama] | [A11.2025.16546] |
 
-**Dipakai untuk:** Toko Kecil / Kantin / Koperasi *(pilih salah satu)*
+**Dipakai untuk:** Toko Kecil / Kantin / Koperasi
 
 ---
 
