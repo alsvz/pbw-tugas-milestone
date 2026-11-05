@@ -1,7 +1,7 @@
 # Kasir dan Stok Sederhana
 
 **Mata Kuliah:** Pemrograman Berbasis Web  
-**Milestone:** 1 — Perencanaan  
+**Milestone:** 1 — Perencanaan | 2 — Front-end dan Interaksi Dasar
 
 ---
 
@@ -15,6 +15,7 @@
 |------|-----|
 | [Mohamad Aldi Pratama] | [A11.2025.16512] |
 | [Vincent Sepriano Gowtama] | [A11.2025.16546] |
+| [Diva Maulana Yusuf] | [A11.2025.16554] |
 
 **Dipakai untuk:** Toko Kecil / Kantin / Koperasi
 
@@ -86,23 +87,42 @@ Pengguna dengan akses terbatas yang hanya perlu memantau performa usaha. Kebutuh
 
 ---
 
-## 8. Informasi Tambahan *(akan diisi saat selesai)*
+### Milestone 1 — Perencanaan
+- Perencanaan fitur dan teknologi
+- Wireframe low-fidelity (login, dashboard, daftar produk, form produk)
 
-### Cara Instalasi Lokal
-*(akan diisi saat selesai)*
+### Milestone 2 — Front-end dan Interaksi Dasar
+Semua halaman statis (data contoh ditulis langsung di HTML). Belum terhubung ke database.
 
-### Struktur Database
-*(akan diisi saat selesai)*
+### File yang dikerjakan:
 
-### Akun Demo
-*(akan diisi saat selesai)*
+| File | Keterangan |
+|------|------------|
+| `index.php` | Redirect ke halaman login |
+| `login.php` | Halaman login dua panel, validasi JS |
+| `dashboard.php` | 4 kartu ringkasan + tabel transaksi terbaru |
+| `logout.php` | Redirect ke halaman login |
+| `includes/header.php` | Topbar, Google Fonts, link CSS |
+| `includes/sidebar.php` | Menu navigasi dengan ikon SVG |
+| `includes/footer.php` | Tutup HTML, load JavaScript |
+| `assets/css/style.css` | Layout responsif, komponen, halaman login, tabel, form |
+| `assets/js/app.js` | Jam real-time, drawer sidebar mobile, validasi form |
+| `pages/produk/index.php` | Daftar produk dengan toolbar, tabel, pagination |
+| `pages/produk/form.php` | Form tambah produk dengan validasi |
+| `pages/kategori/index.php` | Daftar kategori |
+| `pages/transaksi/index.php` | Riwayat transaksi |
 
-### Tautan Hosting
-*(akan diisi saat selesai)*
+### Catatan
+- Login dan form belum menyimpan apa pun. Session PHP dikerjakan di Milestone 3, database di Milestone 4.
+- PHP baru dipakai untuk `include` header, sidebar, dan footer.
+- Penggunaan AI dicatat di `docs/ai-usage-log.md`.
 
-### Tautan Repository
-*(akan diisi saat selesai)*
+### Cara menjalankan
+1. Buka terminal di folder proyek.
+2. Jalankan `C:\xampp\php\php.exe -S localhost:8000` (sesuaikan lokasi `php.exe`).
+3. Buka `http://localhost:8000/login.php`.
 
----
+Alternatif: salin folder ke `C:\xampp\htdocs`, nyalakan Apache, lalu buka `http://localhost/pbw-tugas-milestone/login.php`.
 
-*Dokumen ini merupakan bagian dari Milestone 1 — Perencanaan.*
+### Tampilan
+Screenshot desktop dan HP ada di folder `docs/screenshots/`.
