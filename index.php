@@ -1,3 +1,4 @@
 <?php
-// Titik masuk aplikasi.
-// Nanti: cek session, lalu arahkan ke dashboard.php (jika sudah login) atau login.php (jika belum).
+// index.php - hanya mengarahkan ke halaman login
+header('Location: login.php');
+exit;
