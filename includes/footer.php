@@ -1,3 +1,6 @@
-<?php
-// Bagian bawah halaman yang dipakai ulang di semua halaman.
-// Nanti: penutup tag HTML dan pemanggilan file JavaScript.
+  </div> <!-- Tutup .layout -->
+
+  <!-- JavaScript -->
+  <script src="<?php echo $base; ?>assets/js/app.js"></script>
+</body>
+</html>
