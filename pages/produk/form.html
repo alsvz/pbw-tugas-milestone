@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Produk - Kasir & Stok</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <button class="btn-menu" id="btn-menu" aria-label="Menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    
+    <div class="topbar-judul">Kasir &amp; Stok</div>
+    
+    <div class="topbar-kanan">
+      <div class="tanggal-jam" id="tanggal-jam"></div>
+      <div class="topbar-user">Admin ▾</div>
+    </div>
+  </header>
+
+  <!-- Overlay untuk drawer mobile -->
+  <div id="overlay"></div>
+
+  <!-- Wrapper layout -->
+  <div class="layout">
+    
+    <!-- Sidebar / Menu navigasi -->
+    <aside id="sidebar">
+      <nav>
+        <ul class="menu">
+          <li class="menu-item">
+            <a href="../../dashboard.html">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          
+          <li class="menu-item aktif">
+            <a href="../../pages/produk/index.html">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+              </svg>
+              Produk
+            </a>
+          </li>
+          
+          <li class="menu-item">
+            <a href="../../pages/kategori/index.html">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+              </svg>
+              Kategori
+            </a>
+          </li>
+          
+          <li class="menu-item">
+            <a href="../../pages/transaksi/index.html">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg>
+              Transaksi
+            </a>
+          </li>
+          
+          <li class="menu-item">
+            <a href="../../logout.html">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Konten utama -->
+    <main class="konten">
+      <!-- Judul form: "Tambah Produk Baru" untuk mode tambah,
+           berubah jadi "Edit Produk" di mode edit (nanti di Milestone 3) -->
+      <h1 class="judul-halaman">Tambah Produk Baru</h1>
+      
+      <!-- Pesan sukses (disembunyikan dulu, tampil lewat JS jika valid) -->
+      <div class="pesan-sukses" id="pesan-sukses"></div>
+      
+      <!-- Form produk -->
+      <form id="form-produk" class="kartu">
+        <div class="form-grid">
+          
+          <!-- Field: Nama Produk (wajib) -->
+          <div class="field">
+            <label class="field-label" for="nama">Nama Produk <span style="color:var(--warna-bahaya);">*</span></label>
+            <input class="field-input" type="text" id="nama" name="nama" placeholder="Contoh: Indomie Goreng">
+            <div class="field-error" id="error-nama"></div>
+          </div>
+          
+          <!-- Field: Kategori (wajib) -->
+          <div class="field">
+            <label class="field-label" for="kategori">Kategori <span style="color:var(--warna-bahaya);">*</span></label>
+            <select class="select-filter" id="kategori" name="kategori" style="width:100%;">
+              <option value="">Pilih kategori...</option>
+              <option value="makanan">Makanan</option>
+              <option value="minuman">Minuman</option>
+              <option value="lain-lain">Lain-lain</option>
+            </select>
+            <div class="field-error" id="error-kategori"></div>
+          </div>
+          
+          <!-- Field: Harga (wajib) -->
+          <div class="field">
+            <label class="field-label" for="harga">Harga (Rp) <span style="color:var(--warna-bahaya);">*</span></label>
+            <input class="field-input" type="number" id="harga" name="harga" placeholder="Contoh: 3000" min="0">
+            <div class="field-error" id="error-harga"></div>
+          </div>
+          
+          <!-- Field: Stok Awal (wajib) -->
+          <div class="field">
+            <label class="field-label" for="stok">Stok Awal <span style="color:var(--warna-bahaya);">*</span></label>
+            <input class="field-input" type="number" id="stok" name="stok" placeholder="Contoh: 50" min="0">
+            <div class="field-error" id="error-stok"></div>
+          </div>
+          
+          <!-- Field: Deskripsi (opsional, lebar penuh) -->
+          <div class="field form-full">
+            <label class="field-label" for="deskripsi">Deskripsi</label>
+            <textarea class="field-input" id="deskripsi" name="deskripsi" placeholder="Deskripsi produk (opsional)"></textarea>
+          </div>
+          
+          <!-- Area upload gambar (opsional, HANYA tampilan visual) -->
+          <div class="form-full">
+            <label class="field-label">Gambar Produk (opsional)</label>
+            <div class="upload-area">
+              <!-- Ikon cloud upload -->
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+              </svg>
+              <div class="upload-area-judul">Seret gambar ke sini atau klik untuk pilih</div>
+              <div class="upload-area-teks">PNG, JPG, atau JPEG (maks. 2MB) — hanya tampilan, belum berfungsi</div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Baris tombol: Simpan dan Batal -->
+        <div class="form-aksi">
+          <button type="submit" class="btn btn-utama">Simpan</button>
+          <a href="index.html" class="btn btn-sekunder">Batal</a>
+        </div>
+      </form>
+    </main>
+
+  </div> <!-- Tutup .layout -->
+
+  <!-- JavaScript -->
+  <script src="../../assets/js/app.js"></script>
+</body>
+</html>

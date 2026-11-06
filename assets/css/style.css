@@ -396,25 +396,9 @@ button {
   overflow: hidden;
 }
 
-/* Hiasan lingkaran transparan di panel kiri */
+/* Hiasan lingkaran dihilangkan, panel kiri biru polos */
 .login-hiasan {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.login-hiasan.satu {
-  width: 300px;
-  height: 300px;
-  top: -100px;
-  right: -80px;
-}
-
-.login-hiasan.dua {
-  width: 200px;
-  height: 200px;
-  bottom: -50px;
-  left: -50px;
+  display: none;
 }
 
 .login-panel-kiri h1 {
@@ -530,52 +514,6 @@ button {
 
 .login-btn-submit {
   width: 100%;
-}
-
-/* Pemisah "atau masuk dengan" */
-.login-pemisah {
-  display: flex;
-  align-items: center;
-  gap: var(--spasi-md);
-  margin: var(--spasi-xl) 0 var(--spasi-lg);
-  color: var(--warna-teks-muted);
-  font-size: 13px;
-}
-
-.login-pemisah::before,
-.login-pemisah::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background-color: var(--warna-border);
-}
-
-/* Tombol sosial (HANYA hiasan, tidak berfungsi) */
-.login-sosial {
-  display: flex;
-  gap: var(--spasi-md);
-}
-
-.btn-sosial {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spasi-sm);
-  border: 1px solid var(--warna-border);
-  border-radius: var(--radius);
-  min-height: 44px;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-sosial:hover {
-  background-color: var(--warna-bg-kedua);
-  border-color: var(--warna-teks-muted);
-}
-
-.btn-sosial svg {
-  width: 22px;
-  height: 22px;
 }
 
 
