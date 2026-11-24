@@ -1,7 +1,7 @@
 # Kasir dan Stok Sederhana
 
 **Mata Kuliah:** Pemrograman Berbasis Web  
-**Milestone:** 1 — Perencanaan | 2 — Front-end dan Interaksi Dasar
+**Milestone:** 1 — Perencanaan | 2 — Front-end dan Interaksi Dasar | 3 — Autentikasi dan Session PHP
 
 ---
 
@@ -91,6 +91,8 @@ Pengguna dengan akses terbatas yang hanya perlu memantau performa usaha. Kebutuh
 - Perencanaan fitur dan teknologi
 - Wireframe low-fidelity (login, dashboard, daftar produk, form produk)
 
+---
+
 ### Milestone 2 — Front-end dan Interaksi Dasar
 Semua halaman statis (data contoh ditulis langsung di HTML). Belum terhubung ke database.
 
@@ -107,20 +109,49 @@ Semua halaman statis (data contoh ditulis langsung di HTML). Belum terhubung ke 
 | `includes/footer.php` | Tutup HTML, load JavaScript |
 | `assets/css/style.css` | Layout responsif, komponen, halaman login, tabel, form |
 | `assets/js/app.js` | Jam real-time, drawer sidebar mobile, validasi form |
-| `pages/produk/index.php` | Daftar produk dengan toolbar, tabel, pagination |
+| `pages/produk/produk.php` | Daftar produk dengan toolbar, tabel, pagination |
 | `pages/produk/form.php` | Form tambah produk dengan validasi |
-| `pages/kategori/index.php` | Daftar kategori |
-| `pages/transaksi/index.php` | Riwayat transaksi |
+| `pages/kategori/kategori.php` | Daftar kategori |
+| `pages/transaksi/transaksi.php` | Riwayat transaksi |
 
 ### Catatan
-- Login dan form belum menyimpan apa pun. Session PHP dikerjakan di Milestone 3, database di Milestone 4.
+- Login dan form belum menyimpan apa pun di Milestone 2. Session PHP dikerjakan di Milestone 3, database di Milestone 4.
 - PHP baru dipakai untuk `include` header, sidebar, dan footer.
-- Penggunaan AI dicatat di `docs/ai-usage-log.md`.
+- Penggunaan AI dicatat di `ai-usage-log.md`.
+
+---
+
+### Milestone 3 — Autentikasi dan Session PHP
+Implementasi backend autentikasi: login terhubung ke PHP, session dikelola, dan semua halaman diproteksi.
+
+### File yang dikerjakan:
+
+| File | Keterangan |
+|------|------------|
+| `login.php` | Proses login via POST, validasi JS, pesan error jika gagal |
+| `logout.php` | Destroy session dan redirect ke login |
+| `dashboard.php` | Dilindungi session, tampilkan nama user di topbar |
+| `includes/header.php` | Tampilkan identitas user yang sedang login |
+| `includes/sidebar.php` | Update link navigasi ke nama file baru |
+| `assets/css/style.css` | Perbaikan UI: konsistensi toolbar, kartu, tombol |
+| `assets/js/app.js` | Pemisahan tampilan tanggal dan jam di topbar |
+| `pages/produk/produk.php` | Dilindungi session |
+| `pages/produk/form.php` | Dilindungi session |
+| `pages/kategori/kategori.php` | Dilindungi session |
+| `pages/transaksi/transaksi.php` | Dilindungi session |
+
+### Catatan
+- Session PHP diimplementasikan menggunakan `session_start()` dan `$_SESSION`.
+- Password di-hash menggunakan `password_hash()` dan diverifikasi dengan `password_verify()`.
+- Query login menggunakan prepared statements untuk mencegah SQL injection.
+- Penggunaan AI dicatat di `ai-usage-log.md`.
 
 ### Cara menjalankan
-1. Buka terminal di folder proyek.
-2. Jalankan `C:\xampp\php\php.exe -S localhost:8000` (sesuaikan lokasi `php.exe`).
-3. Buka `http://localhost:8000/login.php`.
+1. Import `database/kasir_stok.sql` ke phpMyAdmin.
+2. Buka terminal di folder proyek.
+3. Jalankan `C:\xampp\php\php.exe -S localhost:8000` (sesuaikan lokasi `php.exe`).
+4. Buka `http://localhost:8000/login.php`.
+5. Login dengan username `admin` dan password `admin123`.
 
 Alternatif: salin folder ke `C:\xampp\htdocs`, nyalakan Apache, lalu buka `http://localhost/pbw-tugas-milestone/login.php`.
 
