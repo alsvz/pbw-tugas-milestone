@@ -45,7 +45,7 @@ Masalah lain yang kerap muncul adalah stok yang tidak diperbarui setelah penjual
 
 ## 5. Target Pengguna
 
-### Admin / Kasir
+### Kasir
 Pengguna utama yang bertugas mengoperasikan aplikasi sehari-hari. Kebutuhannya meliputi:
 - Mengelola data produk (tambah, ubah, hapus)
 - Mengelola kategori produk

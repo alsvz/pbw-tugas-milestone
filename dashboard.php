@@ -23,7 +23,7 @@ include 'includes/sidebar.php';
         </svg>
       </div>
       <div class="ringkasan-info">
-        <div class="ringkasan-nilai">48</div>
+        <div class="ringkasan-nilai">0</div>
         <div class="ringkasan-label">Jumlah Produk</div>
       </div>
     </div>
@@ -36,7 +36,7 @@ include 'includes/sidebar.php';
         </svg>
       </div>
       <div class="ringkasan-info">
-        <div class="ringkasan-nilai">312</div>
+        <div class="ringkasan-nilai">0</div>
         <div class="ringkasan-label">Stok Tersedia</div>
       </div>
     </div>
@@ -49,7 +49,7 @@ include 'includes/sidebar.php';
         </svg>
       </div>
       <div class="ringkasan-info">
-        <div class="ringkasan-nilai">15</div>
+        <div class="ringkasan-nilai">0</div>
         <div class="ringkasan-label">Transaksi Hari Ini</div>
       </div>
     </div>
@@ -62,7 +62,7 @@ include 'includes/sidebar.php';
         </svg>
       </div>
       <div class="ringkasan-info">
-        <div class="ringkasan-nilai">Rp 420.000</div>
+        <div class="ringkasan-nilai">Rp 0</div>
         <div class="ringkasan-label">Total Penjualan Hari Ini</div>
       </div>
     </div>
@@ -73,7 +73,7 @@ include 'includes/sidebar.php';
     <div class="section-header">
       <h2 class="section-judul">Transaksi Terbaru</h2>
       <!-- Link ke halaman transaksi lengkap -->
-      <a href="<?php echo $base; ?>pages/transaksi/index.php" class="section-aksi">Lihat Semua →</a>
+      <a href="<?php echo $base; ?>pages/transaksi/transaksi.php" class="section-aksi">Lihat Semua →</a>
     </div>
     
     <div class="tabel-wrap">
@@ -89,46 +89,7 @@ include 'includes/sidebar.php';
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-label="No.">1</td>
-            <td data-label="Waktu">08:15</td>
-            <td data-label="Nama Produk">Indomie Goreng</td>
-            <td data-label="Qty">2</td>
-            <td data-label="Total">Rp 6.000</td>
-            <td data-label="Kasir">Andi</td>
-          </tr>
-          <tr>
-            <td data-label="No.">2</td>
-            <td data-label="Waktu">08:42</td>
-            <td data-label="Nama Produk">Aqua Botol 600ml</td>
-            <td data-label="Qty">5</td>
-            <td data-label="Total">Rp 10.000</td>
-            <td data-label="Kasir">Andi</td>
-          </tr>
-          <tr>
-            <td data-label="No.">3</td>
-            <td data-label="Waktu">09:10</td>
-            <td data-label="Nama Produk">Chitato 68g</td>
-            <td data-label="Qty">3</td>
-            <td data-label="Total">Rp 15.000</td>
-            <td data-label="Kasir">Budi</td>
-          </tr>
-          <tr>
-            <td data-label="No.">4</td>
-            <td data-label="Waktu">09:35</td>
-            <td data-label="Nama Produk">Kopi Kapal Api</td>
-            <td data-label="Qty">1</td>
-            <td data-label="Total">Rp 2.500</td>
-            <td data-label="Kasir">Andi</td>
-          </tr>
-          <tr>
-            <td data-label="No.">5</td>
-            <td data-label="Waktu">10:05</td>
-            <td data-label="Nama Produk">Teh Botol Sosro</td>
-            <td data-label="Qty">4</td>
-            <td data-label="Total">Rp 12.000</td>
-            <td data-label="Kasir">Budi</td>
-          </tr>
+          <!-- Data transaksi akan diisi dari database di Milestone 3 -->
         </tbody>
       </table>
     </div>

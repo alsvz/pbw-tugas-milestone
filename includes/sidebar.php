@@ -14,7 +14,7 @@
       
       <!-- Produk -->
       <li class="menu-item <?php echo ($menu_aktif === 'produk') ? 'aktif' : ''; ?>">
-        <a href="<?php echo $base; ?>pages/produk/index.php">
+        <a href="<?php echo $base; ?>pages/produk/produk.php">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
           </svg>
@@ -24,7 +24,7 @@
       
       <!-- Kategori -->
       <li class="menu-item <?php echo ($menu_aktif === 'kategori') ? 'aktif' : ''; ?>">
-        <a href="<?php echo $base; ?>pages/kategori/index.php">
+        <a href="<?php echo $base; ?>pages/kategori/kategori.php">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
           </svg>
@@ -34,7 +34,7 @@
       
       <!-- Transaksi -->
       <li class="menu-item <?php echo ($menu_aktif === 'transaksi') ? 'aktif' : ''; ?>">
-        <a href="<?php echo $base; ?>pages/transaksi/index.php">
+        <a href="<?php echo $base; ?>pages/transaksi/transaksi.php">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
           </svg>

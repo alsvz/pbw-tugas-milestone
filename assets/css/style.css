@@ -91,14 +91,32 @@ button {
   font-size: 14px;
   color: var(--warna-teks-muted);
   display: none; /* Tampil di desktop */
+  padding: 6px 14px;
+  background-color: var(--warna-bg-kedua);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--warna-border);
+}
+
+.tanggal-tengah {
+  font-size: 14px;
+  color: var(--warna-teks-muted);
+  display: none; /* Tampil di desktop */
+  padding: 6px 14px;
+  background-color: var(--warna-bg-kedua);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--warna-border);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .topbar-user {
   font-size: 14px;
   font-weight: 500;
-  padding: var(--spasi-xs) var(--spasi-md);
+  padding: 6px 14px;
   background-color: var(--warna-bg-kedua);
   border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--warna-border);
 }
 
 /* Tombol menu (hanya mobile) */
@@ -214,9 +232,9 @@ button {
 
 /* Judul halaman */
 .judul-halaman {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: var(--spasi-xl);
+  margin-bottom: var(--spasi-lg);
   color: var(--warna-teks);
 }
 
@@ -224,9 +242,14 @@ button {
 .kartu {
   background-color: var(--warna-bg);
   border-radius: var(--radius-besar);
-  padding: var(--spasi-xl);
+  padding: var(--spasi-lg);
   box-shadow: var(--bayangan);
   border: 1px solid var(--warna-border);
+}
+
+/* Jarak antar kartu yang ditumpuk vertikal */
+.kartu + .kartu {
+  margin-top: var(--spasi-lg);
 }
 
 .kartu-judul {
@@ -248,6 +271,12 @@ button {
   min-height: 44px;
   transition: all 0.2s;
   cursor: pointer;
+  border: none;
+  font-family: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn-utama {
@@ -349,6 +378,9 @@ button {
   .tanggal-jam {
     display: block;
   }
+  .tanggal-tengah {
+    display: block;
+  }
   
   /* Sidebar tetap di kiri desktop */
   #sidebar {
@@ -365,7 +397,17 @@ button {
   /* Konten bergeser ke kanan */
   .konten {
     margin-left: var(--lebar-sidebar);
-    padding: var(--spasi-xl); /* padding lebih besar di desktop */
+    padding: var(--spasi-lg) var(--spasi-xl); /* atas-bawah lg, kiri-kanan xl */
+  }
+
+  /* Kartu lebih besar di desktop */
+  .kartu {
+    padding: var(--spasi-xl);
+  }
+
+  /* Judul sedikit lebih besar di desktop */
+  .judul-halaman {
+    font-size: 28px;
   }
 }
 
@@ -396,25 +438,9 @@ button {
   overflow: hidden;
 }
 
-/* Hiasan lingkaran transparan di panel kiri */
+/* Hiasan lingkaran dihilangkan, panel kiri biru polos */
 .login-hiasan {
-  position: absolute;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.login-hiasan.satu {
-  width: 300px;
-  height: 300px;
-  top: -100px;
-  right: -80px;
-}
-
-.login-hiasan.dua {
-  width: 200px;
-  height: 200px;
-  bottom: -50px;
-  left: -50px;
+  display: none;
 }
 
 .login-panel-kiri h1 {
@@ -532,62 +558,16 @@ button {
   width: 100%;
 }
 
-/* Pemisah "atau masuk dengan" */
-.login-pemisah {
-  display: flex;
-  align-items: center;
-  gap: var(--spasi-md);
-  margin: var(--spasi-xl) 0 var(--spasi-lg);
-  color: var(--warna-teks-muted);
-  font-size: 13px;
-}
-
-.login-pemisah::before,
-.login-pemisah::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background-color: var(--warna-border);
-}
-
-/* Tombol sosial (HANYA hiasan, tidak berfungsi) */
-.login-sosial {
-  display: flex;
-  gap: var(--spasi-md);
-}
-
-.btn-sosial {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spasi-sm);
-  border: 1px solid var(--warna-border);
-  border-radius: var(--radius);
-  min-height: 44px;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-.btn-sosial:hover {
-  background-color: var(--warna-bg-kedua);
-  border-color: var(--warna-teks-muted);
-}
-
-.btn-sosial svg {
-  width: 22px;
-  height: 22px;
-}
+/* ===== (sosial login dihapus) ===== */
 
 
 /* ===== 7. KARTU RINGKASAN DASHBOARD ===== */
 
 .ringkasan-grid {
   display: grid;
-  /* minmax memastikan kartu tidak pernah lebih kecil dari 140px,
-     tapi tetap mengisi ruang yang ada secara merata */
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--spasi-md);
-  margin-bottom: var(--spasi-xl);
+  margin-bottom: var(--spasi-lg);
 }
 
 .kartu-ringkasan {
@@ -755,6 +735,39 @@ button {
   min-width: 0;
 }
 
+/* Tombol di toolbar tidak boleh melebar mengisi sisa ruang */
+.toolbar > .btn,
+.toolbar > a.btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Input, select, dan tombol di toolbar harus sama tingginya */
+.toolbar .input-cari,
+.toolbar .select-filter,
+.toolbar .btn {
+  height: 44px;
+  min-height: unset;
+  box-sizing: border-box;
+}
+
+/* Select: padding vertikal dikurangi agar teks tidak terpotong */
+.toolbar .select-filter {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Samakan ukuran semua tombol biru di toolbar, baik <a> maupun <button> */
+.toolbar a.btn-utama,
+.toolbar button.btn-utama {
+  font-size: 15px;
+  font-weight: 500;
+  padding: 0 var(--spasi-lg);
+  height: 44px;
+  line-height: 1;
+  border-radius: var(--radius);
+}
+
 .input-cari {
   flex: 1;
   min-width: 200px;
@@ -773,21 +786,34 @@ button {
 }
 
 .select-filter {
-  padding: var(--spasi-md) var(--spasi-sm);
+  padding: var(--spasi-md) 2.5rem var(--spasi-md) var(--spasi-md);
   border: 1px solid var(--warna-border);
   border-radius: var(--radius);
-  font-size: 16px;
+  font-size: 15px;
   font-family: inherit;
+  color: var(--warna-teks);
   background-color: var(--warna-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   min-height: 44px;
   cursor: pointer;
   white-space: nowrap;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .select-filter:focus {
   outline: none;
   border-color: var(--warna-utama);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.select-filter:hover {
+  border-color: var(--warna-teks-muted);
 }
 
 
@@ -1025,4 +1051,76 @@ textarea.field-input {
   .form-aksi .btn {
     width: 100%;
   }
+}
+
+
+/* ===== 14. MODAL ===== */
+
+/* Latar gelap di belakang modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--spasi-lg);
+  /* Disembunyikan dulu, tampil lewat JS */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.aktif {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Kotak modal */
+.modal {
+  background-color: var(--warna-bg);
+  border-radius: var(--radius-besar);
+  padding: var(--spasi-xl);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--bayangan-besar);
+  transform: translateY(-16px);
+  transition: transform 0.2s ease;
+}
+
+.modal-overlay.aktif .modal {
+  transform: translateY(0);
+}
+
+/* Header modal: judul + tombol tutup */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spasi-lg);
+}
+
+.modal-judul {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.modal-tutup {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  color: var(--warna-teks-muted);
+  transition: background-color 0.2s;
+}
+
+.modal-tutup:hover {
+  background-color: var(--warna-bg-kedua);
+  color: var(--warna-teks);
 }

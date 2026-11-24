@@ -25,13 +25,16 @@
     </button>
     
     <div class="topbar-judul">Kasir &amp; Stok</div>
+
+    <!-- Tanggal di tengah topbar -->
+    <div class="tanggal-tengah" id="tanggal-tengah"></div>
     
     <div class="topbar-kanan">
-      <!-- Tanggal dan jam real-time -->
+      <!-- Jam real-time -->
       <div class="tanggal-jam" id="tanggal-jam"></div>
       
-      <!-- Info user (tampilan saja, belum ada fungsi dropdown) -->
-      <div class="topbar-user">Admin ▾</div>
+      <!-- Info user -->
+      <div class="topbar-user">Kasir</div>
     </div>
   </header>
 
