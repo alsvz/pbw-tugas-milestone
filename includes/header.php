@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $judul; ?> - Kasir & Stok</title>
+  <title><?php echo $judul; ?> - StokFlow</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
       </svg>
     </button>
     
-    <div class="topbar-judul">Kasir &amp; Stok</div>
+    <div class="topbar-judul">StokFlow</div>
 
     <!-- Tanggal di tengah topbar -->
     <div class="tanggal-tengah" id="tanggal-tengah"></div>
@@ -33,8 +33,8 @@
       <!-- Jam real-time -->
       <div class="tanggal-jam" id="tanggal-jam"></div>
       
-      <!-- Info user -->
-      <div class="topbar-user">Kasir</div>
+      <!-- Info user: nama diambil dari session -->
+      <div class="topbar-user"><?php echo htmlspecialchars($_SESSION['nama'] ?? 'Pengguna'); ?></div>
     </div>
   </header>
 

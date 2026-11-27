@@ -1,10 +1,9 @@
 <?php
-// Variabel untuk header dan sidebar
-$base = '../../'; // Path relatif ke root (naik 2 level dari pages/kategori/)
+$base = '../../';
 $judul = 'Kategori';
 $menu_aktif = 'kategori';
 
-// Include header dan sidebar
+include '../../includes/auth.php';
 include '../../includes/header.php';
 include '../../includes/sidebar.php';
 ?>

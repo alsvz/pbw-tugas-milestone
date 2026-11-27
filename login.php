@@ -1,6 +1,62 @@
 <?php
-// Halaman login berdiri sendiri (tanpa sidebar dan topbar)
-$base = '';
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php');
+    exit;
+}
+
+// Daftar akun sementara — akan diganti tabel users di Milestone 4
+$daftar_akun = [
+    ['id' => 1, 'username' => 'bos', 'password' => 'bos123', 'nama' => 'Bos'],
+    ['id' => 2, 'username' => 'kasir', 'password' => 'kasir123', 'nama' => 'Kasir'],
+];
+
+// Meniru pola materi dosen: function menerima parameter, foreach, if/AND, return
+function cekLogin($user, $pass) {
+    global $daftar_akun;
+    foreach ($daftar_akun as $akun) {
+        if ($user == $akun['username'] AND $pass == $akun['password']) {
+            return $akun;
+        }
+    }
+    return false;
+}
+
+$pesan_error   = '';
+$pesan_sukses  = '';
+$username_input = '';
+
+if (isset($_GET['logout']) && $_GET['logout'] === '1') {
+    $pesan_sukses = 'Anda berhasil keluar';
+}
+
+// Meniru pola materi dosen: pemrosesan hanya berjalan jika method POST
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $username_input = trim($_POST['username'] ?? '');
+    $password_input = $_POST['password'] ?? '';
+
+    // var_dump($_POST); // aktifkan untuk debug
+
+    if ($username_input === '' OR $password_input === '') {
+        $pesan_error = 'Username dan password wajib diisi';
+    } else {
+        $hasil = cekLogin($username_input, $password_input);
+        if ($hasil !== false) {
+            session_regenerate_id(true);
+            $_SESSION['user_id']  = $hasil['id'];
+            $_SESSION['username'] = $hasil['username'];
+            $_SESSION['nama']     = $hasil['nama'];
+            $_SESSION['flash']    = 'Selamat datang, ' . $hasil['nama'] . '!';
+            header('Location: dashboard.php');
+            exit;
+        } else {
+            $pesan_error = 'Username atau password salah';
+        }
+    }
+}
+
+$base  = '';
 $judul = 'Login';
 ?>
 <!DOCTYPE html>
@@ -8,7 +64,7 @@ $judul = 'Login';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $judul; ?> - Kasir & Stok</title>
+  <title><?php echo $judul; ?> - StokFlow</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,25 +84,34 @@ $judul = 'Login';
       <div class="login-hiasan satu"></div>
       <div class="login-hiasan dua"></div>
       
-      <h1>Selamat datang di Kasir &amp; Stok</h1>
+      <h1>Selamat datang di StokFlow</h1>
       <p>Sistem kasir dan manajemen stok sederhana untuk toko Anda. Kelola produk, kategori, dan transaksi dengan mudah.</p>
     </div>
     
     <!-- Panel kanan: form login -->
     <div class="login-panel-kanan">
-      <form id="form-login" class="login-form">
+      <form id="form-login" class="login-form" method="post" action="">
         <h2>Selamat datang kembali</h2>
         <p class="login-subtitle">Masuk untuk mengelola toko Anda</p>
         
-        <!-- Pesan error umum (disembunyikan dulu, tampil lewat JS) -->
-        <div class="login-pesan-error" id="login-error" style="display:none;">
-          Mohon lengkapi username dan password Anda.
+        <!-- Pesan sukses setelah logout -->
+        <?php if (!empty($pesan_sukses)): ?>
+        <div class="login-pesan-error" id="login-sukses" style="background:#d1fae5;color:#065f46;border-color:#a7f3d0;">
+            <?php echo htmlspecialchars($pesan_sukses); ?>
         </div>
+        <?php endif; ?>
+
+        <!-- Pesan error (tampil jika ada kesalahan login) -->
+        <?php if (!empty($pesan_error)): ?>
+        <div class="login-pesan-error" id="login-error">
+            <?php echo htmlspecialchars($pesan_error); ?>
+        </div>
+        <?php endif; ?>
         
         <!-- Field username -->
         <div class="field">
           <label class="field-label" for="username">Username</label>
-          <input class="field-input" type="text" id="username" name="username" placeholder="Masukkan username" autocomplete="username">
+          <input class="field-input" type="text" id="username" name="username" placeholder="Masukkan username" autocomplete="username" value="<?php echo htmlspecialchars($username_input); ?>">
           <div class="field-error" id="error-username"></div>
         </div>
         

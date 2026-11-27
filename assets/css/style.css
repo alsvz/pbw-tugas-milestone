@@ -561,6 +561,18 @@ button {
 /* ===== (sosial login dihapus) ===== */
 
 
+/* Flash message sukses (login berhasil) */
+.flash-sukses {
+  background-color: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: var(--spasi-md) var(--spasi-lg);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: var(--spasi-lg);
+}
+
 /* ===== 7. KARTU RINGKASAN DASHBOARD ===== */
 
 .ringkasan-grid {

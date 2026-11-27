@@ -1,10 +1,9 @@
 <?php
-// Variabel untuk header dan sidebar
-$base = ''; // Path relatif ke root (kosong karena dashboard.php ada di root)
+$base = '';
 $judul = 'Dashboard';
 $menu_aktif = 'dashboard';
 
-// Include header dan sidebar
+include 'includes/auth.php';
 include 'includes/header.php';
 include 'includes/sidebar.php';
 ?>
@@ -12,6 +11,10 @@ include 'includes/sidebar.php';
 <!-- Konten utama -->
 <main class="konten">
   <h1 class="judul-halaman">Dashboard</h1>
+
+  <?php if (!empty($_SESSION['flash'])): ?>
+  <div class="flash-sukses"><?php echo htmlspecialchars($_SESSION['flash']); unset($_SESSION['flash']); ?></div>
+  <?php endif; ?>
   
   <!-- Kartu ringkasan: 4 kartu, 2 kolom di HP, 4 kolom di desktop -->
   <div class="ringkasan-grid">

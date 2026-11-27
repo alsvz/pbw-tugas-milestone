@@ -1,5 +1,6 @@
 <?php
-// logout.php - sementara hanya mengarahkan ke login.php
-// Nantinya akan diisi proses session_destroy() di Milestone 3
-header('Location: login.php');
+session_start();
+$_SESSION = [];
+session_destroy();
+header('Location: login.php?logout=1');
 exit;

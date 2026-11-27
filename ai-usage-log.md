@@ -20,7 +20,7 @@ file yang tambahkan:
 **milestone 2:**
 
 tujuan:
-membantu membuat front-end statis lengkap untuk aplikasi Kasir & Stok,
+membantu membuat front-end statis lengkap untuk aplikasi StokFlow,
 mencakup layout, komponen CSS, halaman-halaman utama, dan interaksi dasar JavaScript.
 
 prompt:

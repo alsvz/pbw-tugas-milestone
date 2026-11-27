@@ -1,4 +1,4 @@
-# Kasir dan Stok Sederhana
+# StokFlow
 
 **Mata Kuliah:** Pemrograman Berbasis Web  
 **Milestone:** 1 — Perencanaan | 2 — Front-end dan Interaksi Dasar | 3 — Autentikasi dan Session PHP
@@ -7,7 +7,7 @@
 
 ## 1. Nama Proyek dan Anggota
 
-**Nama Proyek:** Kasir dan Stok (Sementara)
+**Nama Proyek:** StokFlow
 
 **Anggota Tim:**
 
@@ -23,7 +23,7 @@
 
 ## 2. Deskripsi Singkat Aplikasi
 
-Kasir dan Stok Sederhana adalah aplikasi web berbasis PHP yang dirancang untuk membantu pengelolaan produk, stok, dan transaksi penjualan secara digital. Aplikasi ini menyediakan antarmuka kasir yang mudah digunakan untuk mencatat setiap transaksi, sekaligus memperbarui stok secara otomatis. Selain itu, tersedia ringkasan transaksi harian yang dapat dipantau oleh pemilik usaha kapan saja.
+StokFlow adalah aplikasi web berbasis PHP yang dirancang untuk membantu pengelolaan produk, stok, dan transaksi penjualan secara digital. Aplikasi ini menyediakan antarmuka kasir yang mudah digunakan untuk mencatat setiap transaksi, sekaligus memperbarui stok secara otomatis. Selain itu, tersedia ringkasan transaksi harian yang dapat dipantau oleh pemilik usaha kapan saja.
 
 ---
 

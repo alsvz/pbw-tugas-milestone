@@ -147,35 +147,25 @@ const formLogin = document.getElementById('form-login');
 
 if (formLogin) {
   formLogin.addEventListener('submit', function(e) {
-    e.preventDefault(); // Cegah form terkirim
     bersihkanError();
-    
+
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
     let valid = true;
-    
-    // Username wajib diisi
+
     if (username === '') {
       tampilkanError('username', 'Username wajib diisi.');
       valid = false;
     }
-    
-    // Password wajib diisi
+
     if (password === '') {
       tampilkanError('password', 'Password wajib diisi.');
       valid = false;
     }
-    
-    // Jika valid, arahkan ke dashboard
-    // CATATAN: ini hanya demo, akan diganti proses PHP di Milestone 3
-    if (valid) {
-      window.location.href = 'dashboard.php';
-    } else {
-      // Tampilkan pesan error umum di atas form
-      const pesanError = document.getElementById('login-error');
-      if (pesanError) {
-        pesanError.style.display = 'block';
-      }
+
+    // Jika tidak valid, cegah submit — biarkan PHP yang proses jika valid
+    if (!valid) {
+      e.preventDefault();
     }
   });
 }
